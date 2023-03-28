@@ -9,6 +9,10 @@ namespace _2011062066_letranbaoduy.ViewModels
 {
     public class CourseViewModel
     {
+
+        public IEnumerable<Course> UpcommingCourses { get; set; }
+        public bool ShowAction { get; set; }
+    
         [Required]
 
         public string Place { get; set; }

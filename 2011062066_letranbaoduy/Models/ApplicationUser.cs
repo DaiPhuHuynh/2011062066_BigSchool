@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -13,6 +15,13 @@ namespace _2011062066_letranbaoduy.Models
         [Required]
         [StringLength(255)]
         public string Name { set; get; }
+        public ICollection<Following> Follower { get; set; }
+        public ICollection<Following> Followees { get; set; }
+        public ApplicationUser() { 
+            Follower = new  Collection<Following>();
+            Followees = new Collection<Following>();    
+        }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
